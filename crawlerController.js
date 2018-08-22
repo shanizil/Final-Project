@@ -525,7 +525,7 @@ exports.getCollegesData = function(req, res){
                         currCollege++;
                         console.error(err);
                     }
-                    // console.log("Get Rents: "+JSON.stringify(data, null, 2));                    
+                    console.log("Get Rents: "+JSON.stringify(data, null, 2));                    
                     let totalRents = 0;
                     let rentsCounter = 0;
                     for (var j = 0; j < numOfRents; j++) {
@@ -554,7 +554,7 @@ exports.getCollegesData = function(req, res){
                     // set college details
                     for (var j = 0; j < colleges.length; j++) {
                         if(colleges[j].rentUrl == collegeUrl){
-                            // console.log(collegeUrl+" Match!");
+                            console.log(collegeUrl+" Match!");
                             // colleges[j].averageRents = averageRent;
                             var now = new Date();
                             var history = {
@@ -568,7 +568,7 @@ exports.getCollegesData = function(req, res){
                                 exec (function(err, newProduct){
                                     if(err) console.log(err);
                                     if(!newProduct) console.log("Error Save College Rents");
-                                    // console.log("New Average Price ("+averageRent+") Saved Successfully in the College's History");
+                                    console.log("New Average Price ("+averageRent+") Saved Successfully in the College's History");
                             })
                         }
                     }
@@ -966,8 +966,8 @@ exports.getCollegesData = function(req, res){
                 if(tmpStr==-1) {
                     if(subject=="physics") return getMath(reqStr, collegeName, "physics2");
 
-                    console.log("Get Math of college: "+collegeName);
-                    console.log(subject+" NOT found in college !!");
+                    // console.log("Get Math of college: "+collegeName);
+                    // console.log(subject+" NOT found in college !!");
                     gradesArray.push(new Object({"units": 0, "grade": 1}));
                     return gradesArray;
                 } 
@@ -987,7 +987,7 @@ exports.getCollegesData = function(req, res){
 
                     // console.log("beforeStr"+beforeStr);
                     // console.log("afterStr"+afterStr);
-                    console.log("Get Subject: "+subject+" of college: "+collegeName);
+                    // console.log("Get Subject: "+subject+" of college: "+collegeName);
                     
                     for (var i = 0; i < numPostWords; i++) {
                         if(isNaN(beforeStr[beforeStr.length-i-2])){
@@ -997,16 +997,16 @@ exports.getCollegesData = function(req, res){
                         }
                         else {
                             if((Number(beforeStr[beforeStr.length-i-2])>10)&&(Number(beforeStr[beforeStr.length-i-2])<101)) {
-                                console.log(subject+" GRADE NUMBER :"+beforeStr[beforeStr.length-i-2]);
-                                console.log("gradesCounter : "+gradesCounter);
+                                // console.log(subject+" GRADE NUMBER :"+beforeStr[beforeStr.length-i-2]);
+                                // console.log("gradesCounter : "+gradesCounter);
                                 if((gradesCounter<2)&&((subject!="english"))){
                                     gradesArray[gradesCounter].grade = (Number(beforeStr[beforeStr.length-i-2]));
                                     gradesCounter++;
                                 }   
                             }
                             else if((Number(beforeStr[beforeStr.length-i-2])<10)&&(Number(beforeStr[beforeStr.length-i-2])>2)) {
-                                console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
-                                console.log("unitsCounter : "+unitsCounter);
+                                // console.log(subject+" UNITS NUMBER :"+beforeStr[beforeStr.length-i-2]);
+                                // console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
                                     gradesArray[unitsCounter].units = (Number(beforeStr[beforeStr.length-i-2]));
                                     unitsCounter++;
@@ -1021,16 +1021,16 @@ exports.getCollegesData = function(req, res){
                         }
                         else {
                             if((Number(afterStr[i])>10)&&(Number(afterStr[i])<101)) {
-                                console.log(subject+" GRADE NUMBER :"+afterStr[i]);
-                                console.log("gradesCounter : "+gradesCounter);
+                                // console.log(subject+" GRADE NUMBER :"+afterStr[i]);
+                                // console.log("gradesCounter : "+gradesCounter);
                                 if(gradesCounter<2) {
                                     gradesArray[gradesCounter].grade = (Number(afterStr[i]));
                                     gradesCounter++;
                                 }
                             }
                             else if((Number(afterStr[i])<10)&&(Number(afterStr[i])>2)) {
-                                console.log(subject+" UNITS NUMBER :"+afterStr[i]);
-                                console.log("unitsCounter : "+unitsCounter);
+                                // console.log(subject+" UNITS NUMBER :"+afterStr[i]);
+                                // console.log("unitsCounter : "+unitsCounter);
                                 if(unitsCounter<2) {
                                     gradesArray[unitsCounter].units = (Number(afterStr[i]));
                                     unitsCounter++;
