@@ -187,10 +187,6 @@ exports.getCollegesData = function(req, res){
                             collegesArr[i].dorms = data.info[3];
                             validData = true;
                         }
-                        if((i==collegesArr.length-1)&&(validData)){
-                            var logData = "Error Refresh College Url => \n"+data.name;
-                            exports.sendLog(logData, "refreshErr");
-                        }
                     }
 
                     if(currCollege==collegesLen-1) {
@@ -1130,6 +1126,10 @@ exports.getCollegesData = function(req, res){
             else {
                 console.log("Error Parse Some Details - "+collegesArr[i].engName);
                 console.log("College Not Updated - Log to admin");
+
+                var logData = "Error Refresh College No => "+i;
+                exports.sendLog(logData, "refreshErr");
+         
             }
         }
     });
