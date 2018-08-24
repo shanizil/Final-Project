@@ -1126,10 +1126,22 @@ exports.getCollegesData = function(req, res){
             else {
                 console.log("Error Parse Some Details - "+collegesArr[i].engName);
                 console.log("College Not Updated - Log to admin");
+            }
+        }
 
-                var logData = "Error Refresh College No => "+i;
-                exports.sendLog(logData, "refreshErr");
-         
+        // Check & validate 
+        for (var i = 0; i < colleges.length; i++) {
+            let checkValid = false;
+            for (var j = 0; j < collegesArr.length; j++) {
+                if(collegesArr[j].engName==colleges[i].name){
+                    console.log("Match");
+                    checkValid = true;
+
+                }
+                if((j==collegesArr.length-1)&&(!checkValid)){
+                    var logData = "Refresh Colleges Err => "+colleges[i].name;
+                    exports.sendLog(logData, "refreshErr");
+                }
             }
         }
     });
