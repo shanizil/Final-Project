@@ -8,6 +8,9 @@ var fs = require('fs');
 // Schemes
 var College = require('./collegeData');
 var Department = require('./departmentData');
+var Log = require('./logData');
+var Logs = require('./logsData');
+
 
 // Daily Get Colleges Data from external Url
 exports.getCollegesData = function(req, res){
@@ -1081,6 +1084,9 @@ exports.getCollegesData = function(req, res){
         //  })
         // }
 
+        var logData = "Refresh finished successfully !";
+        exports.sendLog(logData, "refreshLogs");
+
         // Update College + validate
         for (var i = 0; i < collegesArr.length; i++) {
             if(collegesArr[i].address&&collegesArr[i].hebName&&collegesArr[i].tel&&collegesArr[i].psychometry){
@@ -1329,3 +1335,48 @@ exports.getAllColleges = function(req,res){
 exports.getAllDepartments = function(req,res){
     return Department.find();
 }
+
+
+// Generic Inner Function - Send Log to DB
+exports.sendLog = function(logData, logsType){
+    console.log(logData+" Save to => "+logsType);
+    var newLog = new Log();
+    var now = new Date();
+    var id = mongoose.Types.ObjectId();
+    newLog._id = id;
+    newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
+    newLog.logData = logData;
+    console.log(JSON.stringify(newLog, null, 2));
+    
+    // Updade Logs Collection
+    Logs.update(
+    { logType: logsType },
+    { $push: { logsArr : newLog } } ).
+    exec (function(err, newLog){
+        if(err) console.log(err);
+        if(!newLog) console.log("Error Log");
+        if(newLog) console.log("Log Saved Successfully");
+    })
+};
+
+
+// var logData = "Admin Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "adminLogin");
+
+// var logData = "Designer Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "designerLogin");
+
+// var logData = "User Login => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "userLogin");
+
+// var logData = "New Designer => "+savedUser.name+" created Successfully";
+// exports.sendLog(logData, "newDesigners");
+
+// var logData = "New SignUp => Email: "+req.body.email+" / Password: "+req.body.password;
+// exports.sendLog(logData, "signUp");
+
+// var logData = "Error Refresh Product Url (Banggood PriceErr) => \n"+product.url;
+// exports.sendLog(logData, "refreshErr");
+
+// var logData = "Refresh System Done Successfully !";
+// exports.sendLog(logData, "refreshLog");
