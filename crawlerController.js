@@ -1350,8 +1350,8 @@ exports.sendLog = function(logData, logsType){
     
     // Updade Logs Collection
     Logs.update(
-    { logType: logsType },
-    { $push: { logsArr : newLog } } ).
+    { "logType": logsType },
+    { "$push": { "logsArr" : newLog } } ).
     exec (function(err, newLog){
         if(err) console.log(err);
         if(!newLog) console.log("Error Log");
