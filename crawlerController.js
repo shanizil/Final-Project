@@ -166,6 +166,7 @@ exports.getCollegesData = function(req, res){
 
             var currCollege = 0;
             var collegesLen = colleges.length;
+            let validData = false;
 
             for (var i = 0; i<collegesLen; i++) {
 
@@ -184,6 +185,11 @@ exports.getCollegesData = function(req, res){
                             collegesArr[i].address = data.info[5];
                             collegesArr[i].tuitionFee = data.info[1];
                             collegesArr[i].dorms = data.info[3];
+                            validData = true;
+                        }
+                        if((i==collegesArr.length-1)&&(validData)){
+                            var logData = "Error Refresh College Url => \n"+data.name;
+                            exports.sendLog(logData, "refreshErr");
                         }
                     }
 
@@ -1084,7 +1090,7 @@ exports.getCollegesData = function(req, res){
         //  })
         // }
 
-        var logData = "Refresh finished successfully !";
+        var logData = "Refresh Colleges finished successfully !";
         exports.sendLog(logData, "refreshLogs");
 
         // Update College + validate
@@ -1297,6 +1303,10 @@ exports.getDepartmentsData = function(req, res){
         //      }
         //  })
         // }
+
+
+        var logData = "Refresh Departments finished successfully !";
+        exports.sendLog(logData, "refreshLogs");
 
         // Update Department
         for (var i = 0; i < departmentsArr.length; i++) {
