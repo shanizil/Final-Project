@@ -1134,7 +1134,7 @@ exports.getCollegesData = function(req, res){
             let checkValid = false;
             for (var j = 0; j < collegesArr.length; j++) {
                 if(collegesArr[j].engName==colleges[i].name){
-                    console.log("Match");
+                    // console.log("Match");
                     checkValid = true;
 
                 }
@@ -1348,6 +1348,24 @@ exports.getDepartmentsData = function(req, res){
                 console.log("Department Not Updated - Log to admin");
             }
         }
+
+
+        // Check & validate 
+        for (var i = 0; i < departments.length; i++) {
+            let checkValid = false;
+            for (var j = 0; j < departmentsArr.length; j++) {
+                if(departmentsArr[j].engName==departments[i].name){
+                    // console.log("Match");
+                    checkValid = true;
+
+                }
+                if((j==departmentsArr.length-1)&&(!checkValid)){
+                    var logData = "Refresh Department Err => "+departments[i].name;
+                    exports.sendLog(logData, "refreshErr");
+                }
+            }
+        }
+
     });
 };
 
