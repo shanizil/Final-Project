@@ -118,8 +118,8 @@ app.get('/getCollegesData', crawlerController.getCollegesData);
 
 // Automatic Get Rates - (Scheduler - 6:30-AM)
 var getRatesRule = new schedule.RecurrenceRule();
-getRatesRule.hour = 19;
-getRatesRule.minute = 50; 
+getRatesRule.hour = 00;
+getRatesRule.minute = 00; 
 var i = schedule.scheduleJob(getRatesRule, function(){
     console.log('Automatic Schedule: Get Colleges Data Started !');
     crawlerController.getCollegesData();
@@ -134,8 +134,8 @@ app.get('/getDepartmentsData', crawlerController.getDepartmentsData);
 
 // Automatic Get Rates - (Scheduler - 6:30-AM)
 var getRatesRule = new schedule.RecurrenceRule();
-getRatesRule.hour = 19;
-getRatesRule.minute = 52; 
+getRatesRule.hour = 00;
+getRatesRule.minute = 02; 
 var i = schedule.scheduleJob(getRatesRule, function(){
     console.log('Automatic Schedule: Get Departments Data Started !');
     crawlerController.getDepartmentsData();
