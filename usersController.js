@@ -47,6 +47,26 @@ module.exports={
         });
     },
 
+updateUser(req,response){
+        Users.findOneAndUpdate({_id: req.body.userId},
+            {$set: {firstName:req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    age:req.body.age,
+                    WorkExperience:req.body.WorkExperience, 
+                    gender:req.body.gender}
+            },
+         (err,result)=>{
+            if(err){
+                console.log ('error');
+            }
+
+            else {
+                console.log(`succses`);
+                return response.status(200).json("edit saved");
+            }
+        });
+    },
 
     createUser(req,response){
         let newUser = new user({
