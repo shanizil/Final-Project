@@ -1,6 +1,6 @@
 const   mongoose = require('mongoose'),
-        log = require('./logDataData'),
-        logs = require('./logsDataData'),
+        log = require('./logData'),
+        logs = require('./logsData'),
         parser = require('json-parser'),
         http = require('http');
         options = {
@@ -12,14 +12,14 @@ const   mongoose = require('mongoose'),
 module.exports={
 
        getAllUserLogin(){
-        return logs find();
+        return logs.find();
        },
 
        getAllrefreshErr(){
-         return logs find();
+         return logs.find();
        },
 
        getAllrefreshLogs(){
-        return logs find();
+        return logs.find();
        }
 };
