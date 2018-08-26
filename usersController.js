@@ -43,6 +43,8 @@ module.exports={
             else  {
                 console.log(`login result--->>>${result}`);
                 return res.status(200).json(result);
+                var logData = "user login => Email: "+req.body.email+" / Password: "+req.body.password;
+                exports.sendLog(logData, "userLogin");
             }
         });
     },
@@ -147,4 +149,26 @@ updateUser(req,response){
     } 
 
 
+};
+
+// Generic Inner Function - Send Log to DB
+exports.sendLog = function(logData, logsType){
+    console.log(logData+" Save to => "+logsType);
+    var newLog = new Log();
+    var now = new Date();
+    var id = mongoose.Types.ObjectId();
+    newLog._id = id;
+    newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
+    newLog.logData = logData;
+    console.log(JSON.stringify(newLog, null, 2));
+    
+    // Updade Logs Collection
+    Logs.update(
+    { "logsType": logsType },
+    { "$push": { logsArr : newLog } } ).
+    exec (function(err, newLog){
+        if(err) console.log(err);
+        if(!newLog) console.log("Error Log");
+        if(newLog) console.log("Log Saved Successfully");
+    })
 };
