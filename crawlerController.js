@@ -325,7 +325,7 @@ exports.getCollegesData = function(req, res){
             var arielDetails = {openday: '.pnimi_text > strong'};
             var hitDetails = {openday: '.hit-align-center strong'};
             var ruppinDetails = {openday: '.page-content-wrapper-anchors-item-content > div'};
-            var ortDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
+            var ortDetails = {openday: '.page-content-wrapper-anchors-item-content > p'};
             var kinneretDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
             var technionDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
             var hujiDetails = {openday: '.field-name-body > .field-items > .field-item > div'};
@@ -404,7 +404,7 @@ exports.getCollegesData = function(req, res){
                             console.error(err);
                             currCollege++;
                         }
-                        else return saveOpenDay(data.openday, "college-ort-braude");
+                        else return saveOpenDay(data.openday[0], "college-ort-braude");
                     });
                 }
                 if(collegesLinks[i].name == "college-kinneret"){
@@ -458,7 +458,7 @@ exports.getCollegesData = function(req, res){
                             console.error(err);
                             currCollege++;
                         }
-                        else return saveOpenDay(data.openday[0], "engineering-college-shamoon");
+                        else return saveOpenDay(data.openday, "engineering-college-shamoon");
                     });
                 }
                 if(collegesLinks[i].name == "sapir-academic-college"){
