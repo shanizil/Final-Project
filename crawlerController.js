@@ -494,6 +494,8 @@ exports.getCollegesData = function(req, res){
                         if(collegesArr[j].engName == collegeName){
                             // console.log(collegeName+" Match!");
                             collegesArr[j].openday = "לא ידוע";
+                            var logData = "unknown openday => "+collegesArr[j].engName;
+                            exports.sendLog(logData, "refreshErr");
                         }
                     }
                     // console.log(collegeName+": unknown");
