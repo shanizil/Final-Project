@@ -17,6 +17,26 @@ module.exports={
         return Users.find();
     }, 
 
+    sendLog(logData, logsType){
+        console.log(logData+" Save to => "+logsType);
+        var newLog = new Log();
+        var now = new Date();
+        var id = mongoose.Types.ObjectId();
+        newLog._id = id;
+        newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
+        newLog.logData = logData;
+        console.log(JSON.stringify(newLog, null, 2));
+        
+        // Updade Logs Collection
+        Logs.update(
+        { "logsType": logsType },
+        { "$push": { logsArr : newLog } } ).
+        exec (function(err, newLog){
+            if(err) console.log(err);
+            if(!newLog) console.log("Error Log");
+            if(newLog) console.log("Log Saved Successfully");
+        })
+    },
 
     login(req,res){
         console.log(`login()`);
@@ -46,12 +66,12 @@ module.exports={
                 console.log(`login result--->>>${result}`);
                 return res.status(200).json(result);
                 var logData = "user login => Email: "+req.body.email+" / Password: "+req.body.password;
-                exports.sendLog(logData, "userLogin");
+                module.exports.sendLog(logData, "userLogin");
             }
         });
     },
 
-updateUser(req,response){
+    updateUser(req,response){
         Users.findOneAndUpdate({_id: req.body.userId},
             {$set: {firstName:req.body.firstName,
                     lastName: req.body.lastName,
@@ -146,31 +166,32 @@ updateUser(req,response){
                 console.log(`forgotPassword result--->>>${result}`);
                 return res.status(200).json(result);
             }
-        });
-           
+        });    
     } 
 
 
 };
 
-// Generic Inner Function - Send Log to DB
-exports.sendLog = function(logData, logsType){
-    console.log(logData+" Save to => "+logsType);
-    var newLog = new Log();
-    var now = new Date();
-    var id = mongoose.Types.ObjectId();
-    newLog._id = id;
-    newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
-    newLog.logData = logData;
-    console.log(JSON.stringify(newLog, null, 2));
+
+
+// // Generic Inner Function - Send Log to DB
+// exports.sendLog = function(logData, logsType){
+//     console.log(logData+" Save to => "+logsType);
+//     var newLog = new Log();
+//     var now = new Date();
+//     var id = mongoose.Types.ObjectId();
+//     newLog._id = id;
+//     newLog.logDate = dateFormat(now, "dd/mm/yyyy => HH:MM:ss");
+//     newLog.logData = logData;
+//     console.log(JSON.stringify(newLog, null, 2));
     
-    // Updade Logs Collection
-    Logs.update(
-    { "logsType": logsType },
-    { "$push": { logsArr : newLog } } ).
-    exec (function(err, newLog){
-        if(err) console.log(err);
-        if(!newLog) console.log("Error Log");
-        if(newLog) console.log("Log Saved Successfully");
-    })
-};
+//     // Updade Logs Collection
+//     Logs.update(
+//     { "logsType": logsType },
+//     { "$push": { logsArr : newLog } } ).
+//     exec (function(err, newLog){
+//         if(err) console.log(err);
+//         if(!newLog) console.log("Error Log");
+//         if(newLog) console.log("Log Saved Successfully");
+//     })
+// };
