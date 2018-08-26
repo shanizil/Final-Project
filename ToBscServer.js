@@ -12,6 +12,7 @@ const   express    = require('express'),
         collegesController= require('./collegesController'),
         scholarshipsController=require('./scholarshipsController'),
         subEngController= require('./subEngController'),
+        logsController=require('./logsController'),
         request    = require('request'),
         Crawler = require("crawler"),
         port       = process.env.PORT || 3000,
@@ -97,6 +98,13 @@ app.post('/filterScholarships',scholarshipsController.filterScholarships);
 //      (req,res)=>{
 //       institutesController.getAllInstitutes().then(docs => res.json(docs));
 // });
+
+app.get('/getAllUserLogin',logsController.getAllUserLogin);
+
+app.get('/getAllrefreshErr',logsController.getAllrefreshErr);
+
+app.get('/getAllrefreshLogs',logsController.getAllrefreshLogs);
+
 
 app.get('/getAllSubEng',
      (req,res)=>{
