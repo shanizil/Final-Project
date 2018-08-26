@@ -282,7 +282,7 @@ exports.getCollegesData = function(req, res){
                 },{
                     "id": "10518040",
                     "name": "college-ort-braude",
-                    "url": "https://www.braude.ac.il/Campaign/?ref=google&type=1&gclid=Cj0KCQjw0PTXBRCGARIsAKNYfG0HuxPKWpxV6F_wsdrD2aSs76QW1NB9tVALuwb5g1H7wR1nnQ4b180aAv2JEALw_wcB"
+                    "url": "https://www.michlalot.co.il/braude/open.php"
                 },{
                     "id": "8149700",
                     "name": "college-kinneret",
@@ -306,7 +306,7 @@ exports.getCollegesData = function(req, res){
                 },{
                     "id": "40509770",
                     "name": "engineering-college-shamoon",
-                    "url": "http://www.sce-ac.co.il/?lm_key=de505052e6314ad1935a419ac41fffa0&lm_form=11055&lm_supplier=1196&utm_source=g&utm_campaign=964035723&utm_medium=c&utm_content=%2B%D7%A1%D7%9E%D7%99%20%2B%D7%A9%D7%9E%D7%A2%D7%95%D7%9F%20%2B%D7%99%D7%95%D7%9D%20%2B%D7%A4%D7%AA%D7%95%D7%97&gclid=Cj0KCQjw0PTXBRCGARIsAKNYfG0he0Ysmj1px9NJml-XCyHo2tbx1IEUjHeZGppWmsucE-KwCLB4-YAaAsvjEALw_wcB"
+                    "url": "https://www.sce.ac.il/news/open-day"
                 },{
                     "id": "2458940",
                     "name": "sapir-academic-college",
@@ -325,13 +325,13 @@ exports.getCollegesData = function(req, res){
             var arielDetails = {openday: '.pnimi_text > strong'};
             var hitDetails = {openday: '.hit-align-center strong'};
             var ruppinDetails = {openday: '.page-content-wrapper-anchors-item-content > div'};
-            var ortDetails = {openday: '.data-box div'};
+            var ortDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
             var kinneretDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
             var technionDetails = {openday: '.page-content-wrapper-anchors-item-content > div > p'};
             var hujiDetails = {openday: '.field-name-body > .field-items > .field-item > div'};
             var azrieliDetails = {openday: 'h2.entry-title'};
             var bguDetails = {openday: 'h1'};
-            var sceDetails = {openday: '.marked-header > h2'};
+            var sceDetails = {openday: '.date_title'};
             var sapirDetails = {openday: 'h1'};
             for (var i = 0; i<collegesLen; i++) {
 
