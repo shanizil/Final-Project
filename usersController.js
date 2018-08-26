@@ -2,13 +2,13 @@ const   mongoose = require('mongoose'),
         Users = require('./usersData'),
         parser = require('json-parser'),
         nodemailer = require("nodemailer");
-        Log = require('./logData');
-        Logs = require('./logsData');
         http = require('http');
         options = {
             server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
             replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
         };
+var Log = require('./logData');
+var Logs = require('./logsData');
 
 
 module.exports={
