@@ -1,6 +1,7 @@
 const   mongoose = require('mongoose'),
         Users = require('./usersData'),
         parser = require('json-parser'),
+        dateFormat = require('dateformat'),
         nodemailer = require("nodemailer");
         http = require('http');
         options = {
