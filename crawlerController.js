@@ -404,7 +404,7 @@ exports.getCollegesData = function(req, res){
                             console.error(err);
                             currCollege++;
                         }
-                        else return saveOpenDay(data.openday[0], "college-ort-braude");
+                        else return saveOpenDay(data.openday, "college-ort-braude");
                     });
                 }
                 if(collegesLinks[i].name == "college-kinneret"){
