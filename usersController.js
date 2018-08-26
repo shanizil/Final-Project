@@ -113,7 +113,10 @@ module.exports={
                else
                    console.log('user saved');
             });
-
+        var logData = "New user created Successfully => firstName:"+newUser.firstName+"/ lastName:"+newUser.lastName 
+        +"/ email:"+newUser.email+"/ password:"+newUser.password+"/ age:"+newUser.age
+        +"/ WorkExperience:"+newUser.WorkExperience+"/ gender:"+newUser.gender;
+        module.exports.sendLog(logData, "newUser");
         response.json(newUser);
     },
 
