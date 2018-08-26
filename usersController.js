@@ -64,9 +64,9 @@ module.exports={
 
             else  {
                 console.log(`login result--->>>${result}`);
-                return res.status(200).json(result);
                 var logData = "user login => Email: "+req.body.email+" / Password: "+req.body.password;
                 module.exports.sendLog(logData, "userLogin");
+                return res.status(200).json(result);
             }
         });
     },
