@@ -99,13 +99,12 @@ app.post('/filterScholarships',scholarshipsController.filterScholarships);
 //       institutesController.getAllInstitutes().then(docs => res.json(docs));
 // });
 
-app.get('/getAllLogs',logsController.getAllLogs);
-// app.get('/getAllUserLogin',logsController.getAllUserLogin);
+app.post('/getTypeLogs', logsController.getTypeLogs);
 
-// app.get('/getAllrefreshErr',logsController.getAllrefreshErr);
-
-// app.get('/getAllrefreshLogs',logsController.getAllrefreshLogs);
-
+app.get('/getAllLogs',
+     (req,res)=>{
+      logsController.getAllLogs().then(docs => res.json(docs));
+});
 
 app.get('/getAllSubEng',
      (req,res)=>{
