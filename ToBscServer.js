@@ -100,6 +100,7 @@ app.post('/filterScholarships',scholarshipsController.filterScholarships);
 // });
 
 app.post('/getTypeLogs', logsController.getTypeLogs);
+app.post('/getTypeLog', logsController.getTypeLog);
 
 app.get('/getAllLogs',
      (req,res)=>{
