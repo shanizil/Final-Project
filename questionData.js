@@ -12,11 +12,22 @@ const mongoose = require('mongoose'),
     Wmedical: Number,
     Wmanagement: Number,
     Wbuilding: Number,
-    Wmachine: Number
+    Wmachine: Number,
+    Marketing:Number,
+    inexperienced:Number,
+    Waitress:Number,
+    Sales:Number,
+    Management:Number,
+    female:Number,
+    male:Number,
+    Age18To21:Number,
+    Age22To25:Number,
+    Age26To29:Number,
+    up30:Number
 }, {collection: 'question'}),
 
 
- question= mongoose.model('question',questionSchema);
+question= mongoose.model('question',questionSchema);
 module.exports=question;
 
 

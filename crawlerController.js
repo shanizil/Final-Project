@@ -1401,24 +1401,3 @@ exports.sendLog = function(logData, logsType){
     })
 };
 
-
-// var logData = "Admin Login => Email: "+req.body.email+" / Password: "+req.body.password;
-// exports.sendLog(logData, "adminLogin");
-
-// var logData = "Designer Login => Email: "+req.body.email+" / Password: "+req.body.password;
-// exports.sendLog(logData, "designerLogin");
-
-// var logData = "User Login => Email: "+req.body.email+" / Password: "+req.body.password;
-// exports.sendLog(logData, "userLogin");
-
-// var logData = "New Designer => "+savedUser.name+" created Successfully";
-// exports.sendLog(logData, "newDesigners");
-
-// var logData = "New SignUp => Email: "+req.body.email+" / Password: "+req.body.password;
-// exports.sendLog(logData, "signUp");
-
-// var logData = "Error Refresh Product Url (Banggood PriceErr) => \n"+product.url;
-// exports.sendLog(logData, "refreshErr");
-
-// var logData = "Refresh System Done Successfully !";
-// exports.sendLog(logData, "refreshLog");

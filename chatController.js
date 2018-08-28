@@ -96,7 +96,35 @@ module.exports={
 
         });
     },
-        
+      
+    updateSumUsersUnsweredYES(req,res){
+        questions.findOneAndUpdate({questionId: req.body.questionId},
+            {$set: {Marketing: req.body.Marketing,
+                    inexperienced: req.body.inexperienced,
+                    Waitress: req.body.Waitress,
+                    Sales: req.body.Sales,
+                    Management: req.body.Management,
+                    female: req.body.female,
+                    male: req.body.male,
+                    Age18To21: req.body.Age18To21,
+                    Age22To25: req.body.Age22To25,
+                    Age26To29: req.body.Age26To29,
+                    up30: req.body.up30}
+            },
+         (err,result)=>{
+            if(err){
+                console.log ('error');
+                return res.status(500).json("Error");
+            }
+
+            else {
+                console.log(`succses`);
+                return res.status(200).json(result);
+            }
+
+        });
+    },  
+
     getUserSubEngById(req,res){
             subEngByUser.findOne({
             userID : req.body.userID

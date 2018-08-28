@@ -25,6 +25,17 @@ module.exports={
             Wmanagement:req.body.Wmanagement,
             Wbuilding:req.body.Wbuilding,
             Wmachine:req.body.Wmachine,
+            Marketing:0,
+            inexperienced:0,
+            Waitress:0,
+            Sales:0,
+            Management:0,
+            female:0,
+            male:0,
+            Age18To21:0,
+            Age22To25:0,
+            Age26To29:0,
+            up30:0
             }),
             answerUser='data saved';
 
